@@ -1,0 +1,138 @@
+<head>
+  <title>RankVote</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.21/themes/ui-lightness/jquery-ui.css">
+  
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+  <script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+     
+      
+   <style> 
+    body { background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; }
+    </style>
+</head>
+
+<body>
+  <div id="outer">
+    {{> viewController}}
+  </div>
+</body>
+
+<template name="viewController">
+    {{#unless viewset}}
+        <div>
+            <input type="button" class="inc1" value="Make Poll" />
+            <input type="button" class="inc2" value="Take Poll" />
+        </div>
+    {{else}}
+        {{#if pollmaster}}
+            {{> ballotController}}
+        {{else}}
+            {{> ballotManager}}
+        {{/if}}
+    {{/unless}}
+</template>
+        
+
+
+<template name="ballotController">
+    {{#if pollopen}}
+        {{> addCanidate}}
+        {{> leaderboard}}
+        <div>
+            <input type="button" class="inc" value="Submit" />
+        </div>
+    {{else}}
+        {{> leaderboard}}
+        <span>
+            Poll ID: {{pollID}}
+        </span>
+    {{/if}}
+</template>
+
+<template name="leaderboard">
+  <div class="leaderboard">
+    <ul id="canidate-list">
+    {{#each players}}
+        {{#if pollopen}}
+            {{> canidate}}
+        {{else}}
+            <div class="display">
+                <span class="name">{{name}}</span>
+            </div>
+        {{/if}}
+    {{/each}}
+    </ul>
+  </div>
+
+</template>
+
+<template name="addCanidate">
+<div id="new-todo-box">
+<input type="text" id="new-todo" placeholder="New Canidate" />
+</div>
+</template>
+
+<template name="canidate">
+    {{#if editing}}
+      <div class="edit">
+        <input id="canidate-input" type="text" value="{{name}}" />
+      </div>
+    {{else}}
+      <div class="destroy"></div>
+      <div class="display">
+        <span class="name">{{name}}</span>
+      </div>
+    {{/if}}
+</template>
+
+<template name="ballotManager">
+    
+    {{#unless haspollid}}
+    <div id="new-todo-box">
+        <input type="text" id="getpollid" placeholder="Enter Poll ID" />
+    </div>
+    {{else}}
+    {{#if unsubmitted}}
+            <div> {{> ballot}}</div>
+        {{else}}
+    {{> results}}
+        {{/if}}
+    {{/unless}}
+</template>
+
+<template name="ballot">
+<style>
+    #items { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #items tbody tr { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+</style>
+        <table id="items" class='table table-hover'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each itemlist}}
+                <tr class="ui-state-default" data-id='{{_id}}' data-listposition='{{listposition}}'>
+                    <td>{{name}}</td>
+                    <td>{{listposition}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div>
+            <input type="button" class="submit" value="submit">
+                </div>
+</template>
+
+
+<template name="results">
+    <div>
+        Winner:{{Winner}}
+    </div>
+    
+</template>
