@@ -1,0 +1,94 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    margin: 50px 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#outer {
+    width: 600px;
+    margin: 0 auto;    
+}
+
+
+
+.details, .none {
+    font-weight: bold;
+    font-size: 2em;
+    border-style: dashed none none none;
+    border-color: #ccc;
+    border-width: 4px;
+    margin: 50px 10px;
+    padding: 10px 0px;
+}
+
+.none {
+    color: #777;
+}
+
+.inc {
+  cursor: pointer;
+}
+
+.inc1 {
+  cursor: pointer;
+}
+
+.inc2 {
+  cursor: pointer;
+}
+
+#new-todo-box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 60px;
+    margin-right: 20px;
+    font-size: 260%;
+    position: relative;
+    border-style: dashed none none none;
+    border-color: #ccc;
+    border-width: 4px;
+    height: 40px;
+}
+
+#new-todo {
+   position: absolute;
+   width: 100%;
+}
+#getpollid {
+   position: absolute;
+   width: 100%;
+}
+
+#canidate-list .player:hover .destroy {
+    background: url('/destroy.png') no-repeat 0 0;
+}
+
+#canidate-list .canidate .destroy:hover {
+    background-position: 0 -20px;
+}
+
+#canidate-list .canidate .edit input {
+    margin-left: 35px;
+}
+
+#canidate-list .canidate .display, #canidate-list .canidate .edit {
+    margin-left: 30px;
+    height: 100%;
+    width: auto;
+    font-size:2em;
+    float: left;
+    padding-top: 18px;
+    line-height: 1;
+}
+
+#canidate-input {
+    width: 300px;
+    position: relative;
+    top: -3px;
+}
