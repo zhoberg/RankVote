@@ -1,6 +1,14 @@
-function multiply(a,b) {
-    return a*b;
-}
+//This file contains the code which handles the data storage and algorith control for the 
+//Instant Runoff Voting portion of Rankvote.
+
+//the fucntions below are collectively used to handle data that is passed in in the form of an
+//array of ballots, which contain voters preference information.
+
+//the main function that will be accessed outside the code here is runIRC(ballots), which returns the
+//end result of the algorithm in a data structure designed to convey much about the process by
+//which a decision was made.
+
+
 
 //----------Basic Helpers----------------------------
 
